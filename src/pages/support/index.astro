@@ -1,0 +1,81 @@
+---
+import { product } from "../../config/product";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const isAvailable = Boolean(product.downloadUrl);
+const featureRequestHref = `mailto:${product.supportEmail}?subject=Seek%20feature%20request&body=What%20would%20you%20like%20Seek%20to%20do%3F%0A%0AWhy%20would%20this%20be%20useful%3F%0A`;
+---
+
+<BaseLayout
+  title="Seek support"
+  description="Get help with installing, using, or troubleshooting Seek for macOS."
+  canonicalPath="/support/"
+>
+  <main class="page-main" id="content" tabindex="-1">
+    <section class="page-hero section-shell">
+      <p class="eyebrow">Support</p>
+      <h1>
+        How can we
+        <br />
+        <span>help?</span>
+      </h1>
+      <p class="hero-intro">
+        Find the essentials below or contact Venturian Ecom directly. Seek
+        support is handled by a person, not a ticket maze.
+      </p>
+      <div class="hero-actions">
+        <!--email_off-->
+        <a
+          class="primary-button"
+          href={`mailto:${product.supportEmail}?subject=Seek%20support`}
+        >
+          Email support
+        </a>
+        <a class="secondary-button" href={featureRequestHref}>
+          Request a feature
+        </a>
+        <!--/email_off-->
+      </div>
+    </section>
+
+    <section
+      class="support-list section-shell"
+      aria-label="Frequently asked questions"
+    >
+      <article>
+        <h2>When can I download Seek?</h2>
+        <p>
+          {isAvailable
+            ? "Seek is available now."
+            : "The first public build is still being prepared."}{" "}
+          The <a href="/download/">Download page</a> always shows the current
+          availability.
+        </p>
+      </article>
+      <article>
+        <h2>Which macOS versions are supported?</h2>
+        <p>
+          The planned minimum is macOS {product.minimumMacOS}. Exact
+          architecture and compatibility details will be published with each
+          release.
+        </p>
+      </article>
+      <article>
+        <h2>Does Seek send my searches anywhere?</h2>
+        <p>
+          No. Search, preferences, favorites, and optional clipboard history are
+          designed to stay on your Mac. Read the complete{" "}
+          <a href="/privacy/">Privacy Policy</a>.
+        </p>
+      </article>
+      <article>
+        <h2>What should I include in a support email?</h2>
+        <p>
+          Describe what happened, what you expected, your macOS version, and the
+          Seek version. Never send passwords, clipboard contents, or other
+          sensitive data.
+        </p>
+      </article>
+    </section>
+  </main>
+</BaseLayout>

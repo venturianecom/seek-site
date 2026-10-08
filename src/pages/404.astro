@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page not found — Seek"
+  description="The requested Seek page could not be found."
+  canonicalPath="/404/"
+  robots="noindex"
+>
+  <main class="page-main" id="content" tabindex="-1">
+    <section class="page-hero section-shell">
+      <p class="eyebrow">404</p>
+      <h1>Not found.</h1>
+      <p class="hero-intro">This page does not exist or has moved.</p>
+      <div class="hero-actions">
+        <a class="primary-button" href="/">
+          Back to Seek
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

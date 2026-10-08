@@ -1,0 +1,80 @@
+---
+import { product } from "../../config/product";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const isAvailable = Boolean(product.downloadUrl);
+---
+
+<BaseLayout
+  title="Download Seek for Mac"
+  description="Download Seek, a fast and private native launcher for macOS."
+  canonicalPath="/download/"
+>
+  <main class="page-main" id="content" tabindex="-1">
+    <section class="page-hero section-shell page-hero-centered">
+      <img
+        class="page-app-icon"
+        src="/assets/seek-icon.svg"
+        alt=""
+        width="104"
+        height="104"
+      />
+      <p class="eyebrow">{isAvailable ? "Available now" : "Coming soon"}</p>
+      <h1>
+        Download Seek
+        <br />
+        <span>for Mac.</span>
+      </h1>
+      <p class="hero-intro">
+        {isAvailable
+          ? `Get Seek ${product.latestVersion ?? ""} for macOS ${product.minimumMacOS} or later.`
+          : `The first public release is being prepared for macOS ${product.minimumMacOS} or later.`}
+      </p>
+      <div class="hero-actions">
+        {isAvailable && product.downloadUrl ? (
+          <a class="primary-button" href={product.downloadUrl}>
+            <span>Download for Mac</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+        ) : (
+          <span class="primary-button is-disabled" aria-disabled="true">
+            <span>Download coming soon</span>
+          </span>
+        )}
+        <a
+          class="secondary-button"
+          href={`mailto:${product.supportEmail}?subject=Seek%20early%20access`}
+        >
+          Ask about early access
+        </a>
+      </div>
+    </section>
+
+    <section class="details-grid section-shell" aria-label="Download details">
+      <article class="detail-card">
+        <span>01</span>
+        <h2>Native macOS app</h2>
+        <p>
+          Built with Swift, SwiftUI, and AppKit. No Electron or browser runtime.
+        </p>
+      </article>
+      <article class="detail-card">
+        <span>02</span>
+        <h2>System requirement</h2>
+        <p>
+          Requires macOS {product.minimumMacOS} or later. Apple silicon and
+          Intel availability will be listed with each release.
+        </p>
+      </article>
+      <article class="detail-card">
+        <span>03</span>
+        <h2>Release history</h2>
+        <p>
+          Every public version will include readable notes and its compatibility
+          details.
+        </p>
+        <a href="/release-notes/">View release notes →</a>
+      </article>
+    </section>
+  </main>
+</BaseLayout>
