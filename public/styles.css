@@ -1432,6 +1432,49 @@ h2 {
   box-shadow: 0 1.3rem 3.5rem rgb(84 62 188 / 38%);
 }
 
+.experimental-release {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.75fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  padding: clamp(1.6rem, 4vw, 2.7rem);
+  border: 1px solid rgb(169 156 255 / 28%);
+  border-radius: 1.15rem;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgb(107 89 255 / 16%),
+      transparent 28rem
+    ),
+    var(--surface);
+}
+
+.experimental-release h2 {
+  margin-top: 0.65rem;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+.experimental-release p:not(.eyebrow) {
+  max-width: 48rem;
+  margin-top: 0.9rem;
+  color: var(--muted);
+}
+
+.experimental-actions {
+  display: grid;
+  justify-items: start;
+  gap: 0.85rem;
+}
+
+.experimental-actions .secondary-button {
+  gap: 0.6rem;
+}
+
+.experimental-actions code {
+  color: var(--quiet);
+  font-size: 0.68rem;
+}
+
 .details-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1620,6 +1663,9 @@ h2 {
     grid-template-columns: 1fr 1fr;
   }
   .details-grid {
+    grid-template-columns: 1fr;
+  }
+  .experimental-release {
     grid-template-columns: 1fr;
   }
   .detail-card {

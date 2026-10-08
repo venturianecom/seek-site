@@ -45,6 +45,23 @@ test("release pages are reachable and internally consistent", async ({
   }
 });
 
+test("download page separates the experimental build from production", async ({
+  page,
+}) => {
+  await page.goto("/download/");
+
+  await expect(page.getByText("Experimental channel")).toBeVisible();
+  const experimentalDownload = page.getByRole("link", {
+    name: "Download experimental build",
+  });
+  await expect(experimentalDownload).toHaveAttribute(
+    "href",
+    "https://downloads.seek.venturiane.com/experimental/Seek-1.0-experimental-build55.dmg",
+  );
+  await expect(page.getByText(/not yet notarized/)).toBeVisible();
+  await expect(page.getByText("Download coming soon")).toBeVisible();
+});
+
 test("support offers direct help and feature requests", async ({ page }) => {
   await page.goto("/support/");
 

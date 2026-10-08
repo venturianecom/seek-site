@@ -50,6 +50,33 @@ const isAvailable = Boolean(product.downloadUrl);
       </div>
     </section>
 
+    {product.experimental && (
+      <section
+        class="experimental-release section-shell"
+        aria-labelledby="experimental-title"
+      >
+        <div>
+          <p class="eyebrow">Experimental channel</p>
+          <h2 id="experimental-title">Try what we are building now.</h2>
+          <p>
+            Seek {product.experimental.version}, build{" "}
+            {product.experimental.build}, is available for hands-on testing.
+            This build is Apple Development-signed but not yet notarized, so
+            macOS may require an explicit approval in Privacy &amp; Security.
+          </p>
+        </div>
+        <div class="experimental-actions">
+          <a class="secondary-button" href={product.experimental.downloadUrl}>
+            <span>Download experimental build</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <code title="Full SHA-256 checksum">
+            SHA-256 {product.experimental.sha256.slice(0, 12)}…
+          </code>
+        </div>
+      </section>
+    )}
+
     <section class="details-grid section-shell" aria-label="Download details">
       <article class="detail-card">
         <span>01</span>

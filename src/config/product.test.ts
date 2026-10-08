@@ -40,4 +40,28 @@ describe("product configuration", () => {
       ),
     ).toThrow(/semantic/);
   });
+
+  it("requires secure and verifiable experimental builds", () => {
+    const experimental = product.experimental;
+    expect(experimental).not.toBeNull();
+    if (!experimental) return;
+
+    expect(() =>
+      assertProductConfig(
+        configured({
+          experimental: {
+            ...experimental,
+            downloadUrl: "http://example.com/Seek-experimental.dmg",
+          },
+        }),
+      ),
+    ).toThrow(/experimental downloadUrl must use HTTPS/);
+    expect(() =>
+      assertProductConfig(
+        configured({
+          experimental: { ...experimental, sha256: "not-a-checksum" },
+        }),
+      ),
+    ).toThrow(/sha256/);
+  });
 });
