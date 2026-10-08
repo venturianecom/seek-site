@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Seek for macOS</title>
+  <desc id="desc">Your Mac, one shortcut away. A preview of the Seek launcher.</desc>
+  <defs>
+    <radialGradient id="background-glow" cx="0" cy="0" r="1" gradientTransform="translate(276 538) rotate(-33) scale(620 490)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6B59FF" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#6B59FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="window" x1="700" y1="105" x2="1110" y2="515" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#151D35"/>
+      <stop offset="1" stop-color="#09111F"/>
+    </linearGradient>
+    <linearGradient id="selected" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#8784A3" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#55596F" stop-opacity=".24"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="28" stdDeviation="34" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="#050B14"/>
+  <rect width="1200" height="630" fill="url(#background-glow)"/>
+  <path d="M0 90H1200M0 540H1200" stroke="#20334A" stroke-opacity=".45"/>
+
+  <g transform="translate(76 66)">
+    <rect width="64" height="64" rx="15" fill="#6B59FF"/>
+    <path d="M46 44A20 20 0 1 1 45 20" fill="none" stroke="#FFF" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="32" cy="32" r="4.2" fill="#C9C2FF"/>
+    <text x="82" y="44" fill="#EDF4FB" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" font-weight="700" letter-spacing="-1.5">seek</text>
+  </g>
+
+  <text x="76" y="238" fill="#C9C2FF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="700" letter-spacing="2.5">NATIVE · LOCAL · FAST</text>
+  <text x="76" y="319" fill="#EDF4FB" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="62" font-weight="700" letter-spacing="-4">Your Mac.</text>
+  <text x="76" y="388" fill="#9AABBD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="62" font-weight="700" letter-spacing="-4">One shortcut away.</text>
+  <text x="78" y="448" fill="#9AABBD" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="23">Open apps, run commands, and calculate.</text>
+  <text x="78" y="481" fill="#9AABBD" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="23">All without leaving your keyboard.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="670" y="108" width="454" height="402" rx="28" fill="url(#window)" stroke="#59657D" stroke-width="2"/>
+    <path d="M670 208H1124M670 443H1124" stroke="#59657D" stroke-opacity=".55"/>
+    <circle cx="713" cy="158" r="16" fill="none" stroke="#9AABBD" stroke-width="4"/>
+    <path d="M725 170L737 182" stroke="#9AABBD" stroke-width="4" stroke-linecap="round"/>
+    <text x="755" y="168" fill="#B9C3CF" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="600">Search anything...</text>
+    <rect x="1053" y="139" width="42" height="38" rx="9" fill="#FFFFFF" fill-opacity=".03" stroke="#59657D"/>
+    <text x="1065" y="165" fill="#EDF4FB" font-family="ui-monospace, monospace" font-size="16">⌥</text>
+
+    <text x="699" y="240" fill="#9AABBD" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="700">APPS &amp; COMMANDS</text>
+    <rect x="686" y="257" width="422" height="72" rx="14" fill="url(#selected)"/>
+    <rect x="700" y="271" width="44" height="44" rx="11" fill="#2D8BE8"/>
+    <circle cx="722" cy="293" r="13" fill="none" stroke="#FFF" stroke-width="2.5"/>
+    <text x="763" y="301" fill="#EDF4FB" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="700">Safari</text>
+    <text x="1065" y="301" fill="#9E7DFF" font-family="sans-serif" font-size="23">★</text>
+
+    <rect x="700" y="346" width="44" height="44" rx="11" fill="#2A1F61"/>
+    <text x="714" y="376" fill="#FFF" font-family="sans-serif" font-size="22">✦</text>
+    <text x="763" y="376" fill="#EDF4FB" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="700">Center Window</text>
+    <text x="989" y="376" fill="#66788B" font-family="ui-monospace, monospace" font-size="14">COMMAND</text>
+
+    <g transform="translate(698 462)">
+      <rect width="35" height="35" rx="9" fill="#6B59FF"/>
+      <path d="M25 24A10.5 10.5 0 1 1 24 11" fill="none" stroke="#FFF" stroke-width="3.2" stroke-linecap="round"/>
+      <circle cx="17.5" cy="17.5" r="2.2" fill="#C9C2FF"/>
+      <text x="48" y="25" fill="#EDF4FB" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700">Seek</text>
+    </g>
+  </g>
+
+  <text x="76" y="578" fill="#66788B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">seek.venturiane.com</text>
+  <text x="1124" y="578" fill="#66788B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" text-anchor="end">BY VENTURIAN ECOM</text>
+</svg>

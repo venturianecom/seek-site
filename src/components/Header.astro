@@ -1,0 +1,73 @@
+---
+interface NavigationItem {
+  href: string;
+  label: string;
+  detail: string;
+}
+
+interface Props {
+  currentPath: string;
+  minimumMacOS: string;
+  primaryNavigation: NavigationItem[];
+  mobileNavigation: NavigationItem[];
+}
+
+const { currentPath, minimumMacOS, primaryNavigation, mobileNavigation } =
+  Astro.props;
+const isCurrent = (href: string) =>
+  href === "/"
+    ? currentPath === "/"
+    : !href.includes("#") && currentPath.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="nav-shell">
+    <a class="brand" href="/" aria-label="Seek, home">
+      <img src="/assets/seek-icon.svg" alt="" width="30" height="30" />
+      <span>seek</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      {primaryNavigation.map((item) => (
+        <a
+          href={item.href}
+          aria-current={isCurrent(item.href) ? "page" : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <a
+      class="nav-cta"
+      href="/download/"
+      aria-current={isCurrent("/download/") ? "page" : undefined}
+    >
+      <span>Download</span>
+      <span aria-hidden="true">↓</span>
+    </a>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary aria-label="Open navigation">
+        <span class="menu-word menu-word-open">Menu</span>
+        <span class="menu-word menu-word-close">Close</span>
+        <span class="menu-glyph" aria-hidden="true">
+          <i></i>
+          <i></i>
+        </span>
+      </summary>
+      <nav aria-label="Mobile navigation">
+        {mobileNavigation.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isCurrent(item.href) ? "page" : undefined}
+          >
+            <span>{item.label}</span>
+            <small>
+              {item.href === "/download/"
+                ? `macOS ${minimumMacOS}+`
+                : item.detail}
+            </small>
+          </a>
+        ))}
+      </nav>
+    </details>
+  </div>
+</header>

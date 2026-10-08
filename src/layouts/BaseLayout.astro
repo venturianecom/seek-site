@@ -1,0 +1,123 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { product } from "../config/product";
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  robots?: string;
+  schema?: Record<string, unknown>;
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  robots = "index, follow, max-image-preview:large",
+  schema,
+} = Astro.props;
+const canonicalUrl = new URL(canonicalPath, Astro.site);
+const isAvailable = Boolean(product.downloadUrl);
+const primaryNavigation = [
+  { href: "/#features", label: "Features", detail: "Overview" },
+  { href: "/#demo", label: "Live preview", detail: "Interactive" },
+  { href: "/release-notes/", label: "Release notes", detail: "What is new" },
+  { href: "/support/", label: "Support", detail: "Get help" },
+];
+const mobileNavigation = [
+  ...primaryNavigation.slice(0, 2),
+  { href: "/download/", label: "Download", detail: "Get Seek" },
+  ...primaryNavigation.slice(2),
+  { href: "/privacy/", label: "Privacy", detail: "Full policy" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <meta name="application-name" content="Seek" />
+    <meta name="theme-color" content="#07111f" />
+    <meta name="color-scheme" content="dark" />
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="icon"
+      href="/assets/favicon-32x32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      href="/assets/favicon-16x16.png"
+      type="image/png"
+      sizes="16x16"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/assets/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="/styles.css?v=10" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Seek" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:image"
+      content="https://seek.venturiane.com/assets/social-preview.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://seek.venturiane.com/assets/social-preview.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Seek for macOS — your Mac, one shortcut away"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta
+      name="twitter:image"
+      content="https://seek.venturiane.com/assets/social-preview.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Seek for macOS — your Mac, one shortcut away"
+    />
+    {schema && (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )}
+  </head>
+  <body>
+    <a class="skip-link" href="#content">
+      Skip to content
+    </a>
+    <Header
+      currentPath={Astro.url.pathname}
+      minimumMacOS={product.minimumMacOS}
+      {primaryNavigation}
+      {mobileNavigation}
+    />
+    <slot />
+    <Footer
+      {isAvailable}
+      latestVersion={product.latestVersion}
+      minimumMacOS={product.minimumMacOS}
+    />
+    <script is:inline src="/demo.js?v=7" defer></script>
+  </body>
+</html>

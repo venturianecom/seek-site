@@ -1,0 +1,457 @@
+---
+import { product } from "../config/product";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const description =
+  "Seek is a fast, native macOS launcher for apps, files, calculations, clipboard history, and window controls.";
+const isAvailable = Boolean(product.downloadUrl);
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Seek",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "macOS 14 or later",
+  description,
+  url: "https://seek.venturiane.com/",
+  image: "https://seek.venturiane.com/assets/social-preview.png",
+  author: {
+    "@type": "Organization",
+    name: "Venturian Ecom",
+    url: "https://venturiane.com",
+  },
+};
+---
+
+<BaseLayout
+  title="Seek — your Mac, one shortcut away"
+  {description}
+  canonicalPath="/"
+  {schema}
+>
+  <main id="content" tabindex="-1">
+    <section class="hero section-shell" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <span class="status-dot"></span> Native. Local. Fast.
+        </p>
+        <h1 id="hero-title">
+          Your Mac.
+          <br />
+          <span>One shortcut away.</span>
+        </h1>
+        <p class="hero-intro">
+          Open apps, find files, calculate, revisit your clipboard, and control
+          windows without leaving your keyboard.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="/download/">
+            <span>Download for Mac</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a class="secondary-button" href="#demo">
+            Try it live
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="seek-window hero-window" id="demo" data-seek-demo>
+        <div class="seek-search">
+          <span class="magnifier" aria-hidden="true"></span>
+          <label class="visually-hidden" for="seek-demo-input">
+            Try the interactive Seek preview
+          </label>
+          <input
+            class="search-input"
+            id="seek-demo-input"
+            type="text"
+            placeholder="Search apps, commands, or calculate..."
+            autocomplete="off"
+            spellcheck="false"
+            aria-controls="seek-demo-results"
+          />
+          <span class="hotkey-inline">
+            <kbd>⌥</kbd>
+            <kbd>Space</kbd>
+          </span>
+        </div>
+        <div class="seek-results">
+          <p class="result-group" data-demo-group>
+            Apps &amp; Commands
+          </p>
+          <div id="seek-demo-results" data-demo-results></div>
+        </div>
+        <div class="seek-footer">
+          <span class="seek-footer-brand">
+            <img src="/assets/seek-icon.svg" alt="" width="25" height="25" />
+            Seek
+          </span>
+          <span class="footer-action">
+            <span data-demo-action>Open Application</span> <kbd>↵</kbd>
+          </span>
+          <span class="footer-action">
+            Actions <kbd>⌘</kbd>
+            <kbd>K</kbd>
+          </span>
+        </div>
+      </div>
+      <div class="demo-status" role="status">
+        <span class="demo-live-dot" aria-hidden="true"></span>
+        <span data-demo-status>Interactive preview · Start typing above</span>
+      </div>
+    </section>
+
+    <section class="manifesto section-shell" aria-labelledby="manifesto-title">
+      <p class="eyebrow">Built to disappear</p>
+      <h2 id="manifesto-title">
+        Less time looking.
+        <br />
+        <span>More time doing.</span>
+      </h2>
+      <p>
+        Seek stays out of your way until you press one shortcut. Then everything
+        you need is right there.
+      </p>
+    </section>
+
+    <section
+      class="features section-shell"
+      id="features"
+      aria-labelledby="features-title"
+    >
+      <div class="section-heading">
+        <p class="eyebrow">What Seek does</p>
+        <h2 id="features-title">
+          Small by design.
+          <br />
+          <span>Capable by default.</span>
+        </h2>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card search-card">
+          <div class="feature-copy">
+            <span class="feature-index">01</span>
+            <h3>Find anything fast.</h3>
+            <p>
+              Launch apps and built-in commands in one view. Dedicated File
+              Search uses Spotlight when you need documents.
+            </p>
+          </div>
+          <div class="mini-search" aria-hidden="true">
+            <div class="mini-search-bar">
+              <span class="magnifier"></span>
+              <span>system</span>
+            </div>
+            <div class="mini-result is-active">
+              <span class="app-icon settings-icon">⚙</span>
+              <span>
+                <strong>System Settings</strong>
+                <small>Application</small>
+              </span>
+              <kbd>↵</kbd>
+            </div>
+            <div class="mini-result">
+              <span class="app-icon purple-icon">□</span>
+              <span>
+                <strong>System Information</strong>
+                <small>Application</small>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature-card calculator-card">
+          <div class="feature-copy">
+            <span class="feature-index">02</span>
+            <h3>Calculate in place.</h3>
+            <p>Type a safe local expression and copy the result with Return.</p>
+          </div>
+          <div class="calculator-demo" aria-hidden="true">
+            <span class="calc-query">1280 × 0.21</span>
+            <span class="calc-equals">=</span>
+            <strong>268.8</strong>
+            <span class="copy-pill">↵ Copy</span>
+          </div>
+        </article>
+
+        <article class="feature-card clipboard-card">
+          <div class="feature-copy">
+            <span class="feature-index">03</span>
+            <h3>Pick up where you left off.</h3>
+            <p>
+              Optional plain-text clipboard history stays on your Mac and is off
+              by default.
+            </p>
+          </div>
+          <div class="clipboard-demo" aria-hidden="true">
+            <div class="clip-item current">
+              <span>⌘</span>
+              <p>hello@venturiane.com</p>
+              <small>Just now</small>
+            </div>
+            <div class="clip-item">
+              <span>⌘</span>
+              <p>https://seek.venturiane.com</p>
+              <small>4 min ago</small>
+            </div>
+            <div class="clip-item">
+              <span>⌘</span>
+              <p>Ship the smallest useful thing.</p>
+              <small>12 min ago</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature-card windows-card">
+          <div class="feature-copy">
+            <span class="feature-index">04</span>
+            <h3>Put windows in their place.</h3>
+            <p>
+              Move, center, and resize the window you were using before Seek
+              opened.
+            </p>
+          </div>
+          <div class="window-demo" data-window-demo data-position="left">
+            <div class="window-stage" aria-hidden="true">
+              <span class="window-block"></span>
+            </div>
+            <div
+              class="window-actions"
+              role="group"
+              aria-label="Try a window position"
+            >
+              <button
+                type="button"
+                class="active"
+                data-window-position="left"
+                aria-pressed="true"
+              >
+                Left
+              </button>
+              <button
+                type="button"
+                data-window-position="center"
+                aria-pressed="false"
+              >
+                Center
+              </button>
+              <button
+                type="button"
+                data-window-position="right"
+                aria-pressed="false"
+              >
+                Right
+              </button>
+              <button
+                type="button"
+                data-window-position="maximize"
+                aria-pressed="false"
+              >
+                Maximize
+              </button>
+            </div>
+            <span class="visually-hidden" data-window-status aria-live="polite">
+              Window moved left
+            </span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section
+      class="keyboard-section"
+      id="keyboard"
+      aria-labelledby="keyboard-title"
+    >
+      <div class="section-shell keyboard-copy">
+        <p class="eyebrow">Keyboard first</p>
+        <h2 id="keyboard-title">
+          Right where your
+          <br />
+          <span>hands already are.</span>
+        </h2>
+        <p>
+          Press the default shortcut from anywhere. Change it later if another
+          combination fits you better.
+        </p>
+        <div class="shortcut-callout">
+          <kbd>⌥</kbd>
+          <span>+</span>
+          <kbd>Space</kbd>
+        </div>
+      </div>
+
+      <div
+        class="keyboard"
+        role="img"
+        aria-label="Keyboard outline with Option and Space highlighted as the default Seek shortcut"
+      >
+        <div class="key-row function-row" aria-hidden="true">
+          <span class="key tiny">esc</span>
+          <span class="key tiny">F1</span>
+          <span class="key tiny">F2</span>
+          <span class="key tiny">F3</span>
+          <span class="key tiny">F4</span>
+          <span class="key tiny">F5</span>
+          <span class="key tiny">F6</span>
+          <span class="key tiny">F7</span>
+          <span class="key tiny">F8</span>
+          <span class="key tiny">F9</span>
+          <span class="key tiny">F10</span>
+          <span class="key tiny">F11</span>
+          <span class="key tiny">F12</span>
+        </div>
+        <div class="key-row" aria-hidden="true">
+          <span class="key">~</span>
+          <span class="key">1</span>
+          <span class="key">2</span>
+          <span class="key">3</span>
+          <span class="key">4</span>
+          <span class="key">5</span>
+          <span class="key">6</span>
+          <span class="key">7</span>
+          <span class="key">8</span>
+          <span class="key">9</span>
+          <span class="key">0</span>
+          <span class="key">-</span>
+          <span class="key">=</span>
+          <span class="key wide">delete</span>
+        </div>
+        <div class="key-row" aria-hidden="true">
+          <span class="key wide">tab</span>
+          <span class="key">Q</span>
+          <span class="key">W</span>
+          <span class="key">E</span>
+          <span class="key">R</span>
+          <span class="key">T</span>
+          <span class="key">Y</span>
+          <span class="key">U</span>
+          <span class="key">I</span>
+          <span class="key">O</span>
+          <span class="key">P</span>
+          <span class="key">[</span>
+          <span class="key">]</span>
+          <span class="key">\</span>
+        </div>
+        <div class="key-row" aria-hidden="true">
+          <span class="key caps">caps lock</span>
+          <span class="key">A</span>
+          <span class="key">S</span>
+          <span class="key">D</span>
+          <span class="key">F</span>
+          <span class="key">G</span>
+          <span class="key">H</span>
+          <span class="key">J</span>
+          <span class="key">K</span>
+          <span class="key">L</span>
+          <span class="key">;</span>
+          <span class="key">'</span>
+          <span class="key return">return</span>
+        </div>
+        <div class="key-row" aria-hidden="true">
+          <span class="key shift">shift</span>
+          <span class="key">Z</span>
+          <span class="key">X</span>
+          <span class="key">C</span>
+          <span class="key">V</span>
+          <span class="key">B</span>
+          <span class="key">N</span>
+          <span class="key">M</span>
+          <span class="key">,</span>
+          <span class="key">.</span>
+          <span class="key">/</span>
+          <span class="key shift">shift</span>
+        </div>
+        <p class="keyboard-mobile-label" aria-hidden="true">
+          Press together
+        </p>
+        <div class="key-row bottom-row" aria-hidden="true">
+          <span class="key modifier">fn</span>
+          <span class="key modifier">control</span>
+          <span class="key modifier highlighted">⌥ option</span>
+          <span class="key modifier">⌘ command</span>
+          <span class="key space highlighted">space</span>
+          <span class="key modifier">⌘ command</span>
+          <span class="key modifier">⌥ option</span>
+          <span class="key arrows">← ↑ ↓ →</span>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="privacy section-shell"
+      id="privacy"
+      aria-labelledby="privacy-title"
+    >
+      <div class="privacy-copy">
+        <p class="eyebrow">Local by default</p>
+        <h2 id="privacy-title">
+          Nothing leaves
+          <br />
+          <span>your Mac.</span>
+        </h2>
+        <p>
+          Seek works without an account, cloud service, or analytics. Searches
+          and settings are handled on-device, where they belong.
+        </p>
+        <p class="privacy-note">
+          <span aria-hidden="true">✓</span> Optional clipboard history ignores
+          passwords and common password managers.
+        </p>
+      </div>
+      <div
+        class="privacy-panel"
+        role="group"
+        aria-label="Data stored locally by Seek"
+      >
+        <div class="privacy-panel-header">
+          <span>
+            <i></i> Local only
+          </span>
+          <strong>On-device</strong>
+        </div>
+        <ul>
+          <li>
+            <span>Search queries</span>
+            <strong>Never sent</strong>
+          </li>
+          <li>
+            <span>Preferences</span>
+            <strong>On your Mac</strong>
+          </li>
+          <li>
+            <span>Favorites</span>
+            <strong>On your Mac</strong>
+          </li>
+          <li>
+            <span>Clipboard history</span>
+            <strong>Optional</strong>
+          </li>
+        </ul>
+        <div class="privacy-panel-footer">
+          <img src="/assets/seek-icon.svg" alt="" width="26" height="26" />
+          <span>Seek has no server to call home to.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta section-shell" aria-labelledby="final-cta-title">
+      <div class="cta-halo" aria-hidden="true"></div>
+      <img src="/assets/seek-icon.svg" alt="" width="112" height="112" />
+      <p class="eyebrow">{isAvailable ? "Available now" : "Coming soon"}</p>
+      <h2 id="final-cta-title">
+        {isAvailable ? "Seek is ready." : "Seek is almost ready."}
+      </h2>
+      <p>
+        {isAvailable
+          ? "Download the latest native build and put your Mac one shortcut away."
+          : "A fast, private launcher for macOS is on the way. Until then, explore the interactive preview above."}
+      </p>
+      <a class="primary-button" href="/download/">
+        <span>Download for Mac</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </section>
+  </main>
+</BaseLayout>

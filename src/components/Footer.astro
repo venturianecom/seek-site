@@ -1,0 +1,55 @@
+---
+interface Props {
+  isAvailable: boolean;
+  latestVersion: string | null;
+  minimumMacOS: string;
+}
+
+const { isAvailable, latestVersion, minimumMacOS } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="footer-shell">
+    <div class="footer-brand">
+      <a class="brand" href="/">
+        <img src="/assets/seek-icon.svg" alt="" width="30" height="30" />
+        <span>seek</span>
+      </a>
+      <p>
+        A small, native macOS launcher.
+        <br />
+        {isAvailable ? "Available now" : "Coming soon"} from{" "}
+        <a href="https://venturiane.com/en/">Venturian Ecom</a>.
+      </p>
+    </div>
+    <div class="footer-column">
+      <strong>Product</strong>
+      <a href="/download/">Download</a>
+      <a href="/#features">Features</a>
+      <a href="/#demo">Live preview</a>
+      <a href="/release-notes/">Release notes</a>
+    </div>
+    <div class="footer-column">
+      <strong>Help</strong>
+      <a href="/support/">Support</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/#privacy">Local privacy</a>
+      <a href="mailto:hello@venturiane.com?subject=Seek%20support">Contact</a>
+    </div>
+    <div class="footer-column">
+      <strong>Venturian</strong>
+      <a href="https://venturiane.com/en/">Company</a>
+      <a href="https://venturiane.com/en/company-details/">Company details</a>
+      <a href="https://github.com/venturianecom">GitHub</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Venturian Ecom</span>
+    <span>
+      {isAvailable
+        ? `Available now${latestVersion ? ` · ${latestVersion}` : ""}`
+        : "Coming soon"}{" "}
+      · macOS {minimumMacOS}+
+    </span>
+  </div>
+</footer>

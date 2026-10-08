@@ -1,0 +1,60 @@
+---
+import { getPublishedReleases } from "../../content/releases";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const releases = await getPublishedReleases();
+---
+
+<BaseLayout
+  title="Seek release notes"
+  description="New features, improvements, fixes, and compatibility information for every public Seek release."
+  canonicalPath="/release-notes/"
+>
+  <main class="page-main" id="content" tabindex="-1">
+    <section class="page-hero section-shell">
+      <p class="eyebrow">Release notes</p>
+      <h1>
+        What is new
+        <br />
+        <span>in Seek.</span>
+      </h1>
+      <p class="hero-intro">
+        New features, improvements, fixes, and compatibility details for every
+        public release.
+      </p>
+    </section>
+
+    <section class="release-list section-shell" aria-label="Seek releases">
+      {releases.length ? (
+        releases.map((release) => (
+          <a class="release-card" href={`/release-notes/${release.data.slug}/`}>
+            <div>
+              <span class="release-version">
+                Version {release.data.version}
+              </span>
+              <h2>{release.data.title}</h2>
+              <p>{release.data.description}</p>
+            </div>
+            <time datetime={release.data.pubDate.toISOString()}>
+              {release.data.pubDate.toLocaleDateString("en-US", {
+                dateStyle: "long",
+              })}
+            </time>
+          </a>
+        ))
+      ) : (
+        <div class="empty-state">
+          <span class="status-dot" aria-hidden="true"></span>
+          <h2>Public release notes are coming soon.</h2>
+          <p>
+            The first entry will appear here alongside the first downloadable
+            version of Seek.
+          </p>
+          <a class="secondary-button" href="/download/">
+            Check download availability
+          </a>
+        </div>
+      )}
+    </section>
+  </main>
+</BaseLayout>

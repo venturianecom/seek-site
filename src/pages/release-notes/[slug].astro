@@ -1,0 +1,51 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+
+import { getPublishedReleases } from "../../content/releases";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+interface Props {
+  release: CollectionEntry<"releases">;
+}
+
+export async function getStaticPaths() {
+  const releases = await getPublishedReleases();
+  return releases.map((release) => ({
+    params: { slug: release.data.slug },
+    props: { release },
+  }));
+}
+
+const { release } = Astro.props;
+const { Content } = await render(release);
+---
+
+<BaseLayout
+  title={`${release.data.title} — Seek ${release.data.version}`}
+  description={release.data.description}
+  canonicalPath={`/release-notes/${release.data.slug}/`}
+>
+  <main class="page-main" id="content" tabindex="-1">
+    <article class="prose section-shell">
+      <p class="eyebrow">Release {release.data.version}</p>
+      <h1>{release.data.title}</h1>
+      <div class="release-meta">
+        <time datetime={release.data.pubDate.toISOString()}>
+          {release.data.pubDate.toLocaleDateString("en-US", {
+            dateStyle: "long",
+          })}
+        </time>
+        <span>macOS {release.data.minimumMacOS}+</span>
+      </div>
+      <p class="article-intro">{release.data.description}</p>
+      {release.data.downloadUrl && (
+        <a class="primary-button" href={release.data.downloadUrl}>
+          Download this release
+        </a>
+      )}
+      <div class="prose-body">
+        <Content />
+      </div>
+    </article>
+  </main>
+</BaseLayout>
