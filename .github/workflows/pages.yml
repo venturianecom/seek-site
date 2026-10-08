@@ -35,7 +35,7 @@ jobs:
       - name: Validate and build
         run: npm run validate
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: Upload site
         uses: actions/upload-pages-artifact@v4
         with:
