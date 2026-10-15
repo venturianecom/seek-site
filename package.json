@@ -24,7 +24,7 @@
     "validate": "npm run format:check && npm run lint && npm run check && npm run build && npm run check:html && npm run check:links && npm run test && npm run lighthouse:check"
   },
   "dependencies": {
-    "astro": "7.3.5"
+    "astro": "7.3.8"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
