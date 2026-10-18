@@ -56,11 +56,11 @@ export const product: ProductConfig = {
   downloadUrl: null as string | null,
   latestVersion: null as string | null,
   experimental: {
-    version: "1.0",
-    build: "55",
+    version: "1.0.0",
+    build: "57",
     downloadUrl:
-      "https://downloads.seek.venturiane.com/experimental/Seek-1.0-experimental-build55.dmg",
-    sha256: "bdbd7e9166f0e297fe5006927f18783e8c90b4c8cb0c23b79e836ff18849198c",
+      "https://downloads.seek.venturiane.com/experimental/Seek-ExperimentalPre1.0.0Build57.dmg",
+    sha256: "217e6d18281ad7848aff833d42e8278d52144cb3374bdbf4a6dca511f0324768",
     notarized: false,
   },
   supportEmail: "hello@venturiane.com",

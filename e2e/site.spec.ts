@@ -56,9 +56,12 @@ test("download page separates the experimental build from production", async ({
   });
   await expect(experimentalDownload).toHaveAttribute(
     "href",
-    "https://downloads.seek.venturiane.com/experimental/Seek-1.0-experimental-build55.dmg",
+    "https://downloads.seek.venturiane.com/experimental/Seek-ExperimentalPre1.0.0Build57.dmg",
   );
-  await expect(page.getByText(/not yet notarized/)).toBeVisible();
+  await expect(
+    page.getByText(/Seek Experimental Pre-1\.0\.0 Build 57/),
+  ).toBeVisible();
+  await expect(page.getByText(/ad-hoc signed and not notarized/)).toBeVisible();
   await expect(page.getByText("Download coming soon")).toBeVisible();
 });
 
