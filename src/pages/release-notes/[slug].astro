@@ -1,6 +1,7 @@
 ---
 import { render, type CollectionEntry } from "astro:content";
 
+import AppleIcon from "../../components/AppleIcon.astro";
 import { getPublishedReleases } from "../../content/releases";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
@@ -40,6 +41,7 @@ const { Content } = await render(release);
       <p class="article-intro">{release.data.description}</p>
       {release.data.downloadUrl && (
         <a class="primary-button" href={release.data.downloadUrl}>
+          <AppleIcon />
           Download this release
         </a>
       )}

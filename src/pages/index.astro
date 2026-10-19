@@ -1,4 +1,5 @@
 ---
+import AppleIcon from "../components/AppleIcon.astro";
 import { product } from "../config/product";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
@@ -30,6 +31,7 @@ const schema = {
 >
   <main id="content" tabindex="-1">
     <section class="hero section-shell" id="top" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-copy">
         <p class="eyebrow">
           <span class="status-dot"></span> Native launcher for macOS
@@ -45,8 +47,8 @@ const schema = {
         </p>
         <div class="hero-actions">
           <a class="primary-button" href="/download/">
+            <AppleIcon />
             <span>Download for Mac</span>
-            <span aria-hidden="true">↓</span>
           </a>
           <a class="secondary-button" href="#demo">
             Try it live
@@ -99,19 +101,6 @@ const schema = {
         <span class="demo-live-dot" aria-hidden="true"></span>
         <span data-demo-status>Interactive preview · Start typing above</span>
       </div>
-    </section>
-
-    <section class="manifesto section-shell" aria-labelledby="manifesto-title">
-      <p class="eyebrow">Built to disappear</p>
-      <h2 id="manifesto-title">
-        Less time looking.
-        <br />
-        <span>More time doing.</span>
-      </h2>
-      <p>
-        Seek stays out of your way until you press one shortcut. Then everything
-        you need is right there.
-      </p>
     </section>
 
     <section
@@ -269,14 +258,11 @@ const schema = {
       <div class="section-shell keyboard-copy">
         <p class="eyebrow">Keyboard first</p>
         <h2 id="keyboard-title">
-          Right where your
+          One shortcut.
           <br />
-          <span>hands already are.</span>
+          <span>Always ready.</span>
         </h2>
-        <p>
-          Press the default shortcut from anywhere. Change it later if another
-          combination fits you better.
-        </p>
+        <p>Press Option + Space from anywhere. Change it whenever you want.</p>
         <div class="shortcut-callout">
           <kbd>⌥</kbd>
           <span>+</span>
@@ -440,19 +426,18 @@ const schema = {
 
     <section class="final-cta section-shell" aria-labelledby="final-cta-title">
       <div class="cta-halo" aria-hidden="true"></div>
-      <img src="/assets/seek-icon.svg" alt="" width="112" height="112" />
       <p class="eyebrow">{isAvailable ? "Available now" : "Coming soon"}</p>
       <h2 id="final-cta-title">
-        {isAvailable ? "Seek is ready." : "Seek is almost ready."}
+        {isAvailable ? "Download Seek." : "Get Seek for Mac."}
       </h2>
       <p>
         {isAvailable
-          ? "Download the latest native build and open apps, files, and commands from one place."
-          : "A fast, private launcher for macOS is on the way. Until then, explore the interactive preview above."}
+          ? "Download the latest native build for macOS."
+          : "The first public release is on the way."}
       </p>
       <a class="primary-button" href="/download/">
+        <AppleIcon />
         <span>Download for Mac</span>
-        <span aria-hidden="true">→</span>
       </a>
     </section>
   </main>

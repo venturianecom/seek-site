@@ -7,7 +7,7 @@ const reduceMotion = window.matchMedia(
 
 if (!reduceMotion && "IntersectionObserver" in window) {
   const revealTargets = document.querySelectorAll(
-    ".manifesto, .section-heading, .feature-card, .keyboard-copy, .keyboard, .privacy, .final-cta, .details-grid, .release-list, .support-list, .prose-body, .footer-shell",
+    ".section-heading, .feature-card, .keyboard-copy, .keyboard, .privacy, .final-cta, .details-grid, .release-list, .support-list, .prose-body, .footer-shell",
   );
 
   document.querySelectorAll(".feature-card").forEach((card, index) => {
@@ -28,6 +28,31 @@ if (!reduceMotion && "IntersectionObserver" in window) {
   revealTargets.forEach((target) => {
     target.classList.add("reveal-ready");
     revealObserver.observe(target);
+  });
+}
+
+if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+  document
+    .querySelectorAll(".feature-card, .privacy, .final-cta")
+    .forEach((panel) => {
+      panel.addEventListener("pointermove", (event) => {
+        const bounds = panel.getBoundingClientRect();
+        panel.style.setProperty(
+          "--spotlight-x",
+          `${event.clientX - bounds.left}px`,
+        );
+        panel.style.setProperty(
+          "--spotlight-y",
+          `${event.clientY - bounds.top}px`,
+        );
+      });
+    });
+
+  const hero = document.querySelector(".hero");
+  hero?.addEventListener("pointermove", (event) => {
+    const bounds = hero.getBoundingClientRect();
+    hero.style.setProperty("--hero-x", `${event.clientX - bounds.left}px`);
+    hero.style.setProperty("--hero-y", `${event.clientY - bounds.top}px`);
   });
 }
 
@@ -105,8 +130,7 @@ if (demo) {
       title: "Safari",
       description: "Open the web browser",
       type: "Application",
-      icon: "◉",
-      iconClass: "safari-icon",
+      iconSrc: "/assets/demo-apps/safari.png",
       favorite: true,
       keywords: "browser web internet",
     },
@@ -114,8 +138,7 @@ if (demo) {
       title: "App Store",
       description: "Discover apps for your Mac",
       type: "Application",
-      icon: "A",
-      iconClass: "store-icon",
+      iconSrc: "/assets/demo-apps/app-store.png",
       favorite: true,
       keywords: "applications updates",
     },
@@ -123,40 +146,35 @@ if (demo) {
       title: "Finder",
       description: "Browse files and folders",
       type: "Application",
-      icon: "F",
-      iconClass: "finder-icon",
+      iconSrc: "/assets/demo-apps/finder.png",
       keywords: "files folders",
     },
     {
       title: "Calendar",
       description: "View your calendar",
       type: "Application",
-      icon: "6",
-      iconClass: "calendar-icon",
+      iconSrc: "/assets/demo-apps/calendar.png",
       keywords: "events meetings schedule",
     },
     {
       title: "Notes",
       description: "Open your notes",
       type: "Application",
-      icon: "N",
-      iconClass: "notes-icon",
+      iconSrc: "/assets/demo-apps/notes.png",
       keywords: "write text",
     },
     {
       title: "System Settings",
       description: "Change macOS settings",
       type: "Application",
-      icon: "⚙",
-      iconClass: "settings-icon",
+      iconSrc: "/assets/demo-apps/system-settings.png",
       keywords: "preferences system",
     },
     {
       title: "Terminal",
       description: "Open a command line",
       type: "Application",
-      icon: ">_",
-      iconClass: "terminal-icon",
+      iconSrc: "/assets/demo-apps/terminal.png",
       keywords: "shell developer",
     },
     {
@@ -409,9 +427,18 @@ if (demo) {
       row.className = `seek-row${index === selectedIndex ? " is-selected" : ""}`;
       row.style.setProperty("--result-index", index);
       const icon = document.createElement("span");
-      icon.className = `app-icon ${item.iconClass}`;
-      icon.textContent = item.icon;
+      icon.className = `app-icon${item.iconSrc ? " app-icon-image" : ` ${item.iconClass}`}`;
       icon.setAttribute("aria-hidden", "true");
+      if (item.iconSrc) {
+        const image = document.createElement("img");
+        image.src = item.iconSrc;
+        image.alt = "";
+        image.width = 38;
+        image.height = 38;
+        icon.append(image);
+      } else {
+        icon.textContent = item.icon;
+      }
 
       const title = document.createElement("strong");
       title.textContent = item.title;
