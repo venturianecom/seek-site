@@ -40,7 +40,9 @@ npx playwright install chromium
 - `src/config/product.ts` is the single source for release availability.
 - `src/content/releases/` contains Markdown release notes.
 - `src/pages/` contains route-level content.
-- `public/` contains static assets, CSS, and browser behavior.
+- `src/styles.css` and `src/scripts/demo.js` contain the bundled frontend styles
+  and browser behavior.
+- `public/` contains static images, icons, and hosting files.
 - `e2e/` and colocated `*.test.ts` files cover browser and unit behavior.
 
 ## Downloads

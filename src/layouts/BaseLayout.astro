@@ -1,10 +1,8 @@
 ---
-import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
-
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { product } from "../config/product";
+import styles from "../styles.css?inline";
 
 interface Props {
   title: string;
@@ -23,7 +21,6 @@ const {
 } = Astro.props;
 const canonicalUrl = new URL(canonicalPath, Astro.site);
 const isAvailable = Boolean(product.downloadUrl);
-const styles = await readFile(resolve("public/styles.css"), "utf8");
 const primaryNavigation = [
   { href: "/#features", label: "Features", detail: "Overview" },
   { href: "/#demo", label: "Live preview", detail: "Interactive" },
@@ -89,7 +86,7 @@ const mobileNavigation = [
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Seek for macOS — your Mac, one shortcut away"
+      content="Seek for macOS — open apps and find files"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -100,7 +97,7 @@ const mobileNavigation = [
     />
     <meta
       name="twitter:image:alt"
-      content="Seek for macOS — your Mac, one shortcut away"
+      content="Seek for macOS — open apps and find files"
     />
     {schema && (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -123,6 +120,6 @@ const mobileNavigation = [
       minimumMacOS={product.minimumMacOS}
       supportEmail={product.supportEmail}
     />
-    <script is:inline src="/demo.js?v=7" defer></script>
+    <script src="../scripts/demo.js"></script>
   </body>
 </html>

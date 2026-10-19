@@ -7,6 +7,11 @@ test("homepage exposes the release navigation and interactive preview", async ({
 }) => {
   await page.goto("/");
 
+  await expect(page).toHaveTitle("Seek — app and file launcher for macOS");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    /Open apps\.\s*Find files\./,
+  );
+
   const header = page.locator(".site-header");
   if (isMobile) await header.locator(".mobile-menu summary").click();
   const navigation = isMobile
