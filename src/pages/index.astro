@@ -133,7 +133,14 @@ const schema = {
               <span>system</span>
             </div>
             <div class="mini-result is-active">
-              <span class="app-icon settings-icon">⚙</span>
+              <span class="app-icon app-icon-image">
+                <img
+                  src="/assets/demo-apps/system-settings.png"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+              </span>
               <span>
                 <strong>System Settings</strong>
                 <small>Application</small>
@@ -141,7 +148,14 @@ const schema = {
               <kbd>↵</kbd>
             </div>
             <div class="mini-result">
-              <span class="app-icon purple-icon">□</span>
+              <span class="app-icon app-icon-image">
+                <img
+                  src="/assets/demo-apps/system-information.png"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+              </span>
               <span>
                 <strong>System Information</strong>
                 <small>Application</small>
@@ -373,55 +387,43 @@ const schema = {
       aria-labelledby="privacy-title"
     >
       <div class="privacy-copy">
-        <p class="eyebrow">Local by default</p>
+        <p class="eyebrow">Privacy</p>
         <h2 id="privacy-title">
-          Nothing leaves
+          No account.
           <br />
-          <span>your Mac.</span>
+          <span>No analytics.</span>
         </h2>
         <p>
-          Seek works without an account, cloud service, or analytics. Searches
-          and settings are handled on-device, where they belong.
+          Seek runs locally on your Mac. Searches, preferences, and favorites
+          are not sent to a server.
         </p>
-        <p class="privacy-note">
-          <span aria-hidden="true">✓</span> Optional clipboard history ignores
-          passwords and common password managers.
-        </p>
+        <a class="privacy-link" href="/privacy/">
+          Read the privacy policy <span aria-hidden="true">→</span>
+        </a>
       </div>
-      <div
-        class="privacy-panel"
-        role="group"
-        aria-label="Data stored locally by Seek"
-      >
-        <div class="privacy-panel-header">
-          <span>
-            <i></i> Local only
-          </span>
-          <strong>On-device</strong>
-        </div>
-        <ul>
-          <li>
-            <span>Search queries</span>
-            <strong>Never sent</strong>
-          </li>
-          <li>
-            <span>Preferences</span>
-            <strong>On your Mac</strong>
-          </li>
-          <li>
-            <span>Favorites</span>
-            <strong>On your Mac</strong>
-          </li>
-          <li>
-            <span>Clipboard history</span>
-            <strong>Optional</strong>
-          </li>
-        </ul>
-        <div class="privacy-panel-footer">
-          <img src="/assets/seek-icon.svg" alt="" width="26" height="26" />
-          <span>Seek has no server to call home to.</span>
-        </div>
-      </div>
+      <ol class="privacy-facts">
+        <li>
+          <span>01</span>
+          <div>
+            <strong>On-device search</strong>
+            <p>Your queries stay on your Mac.</p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <strong>Your settings</strong>
+            <p>Preferences and favorites are stored locally.</p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <strong>Clipboard is optional</strong>
+            <p>Turn it on only if you want it. Passwords are excluded.</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
     <section class="final-cta section-shell" aria-labelledby="final-cta-title">

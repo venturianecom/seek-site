@@ -32,21 +32,19 @@ if (!reduceMotion && "IntersectionObserver" in window) {
 }
 
 if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
-  document
-    .querySelectorAll(".feature-card, .privacy, .final-cta")
-    .forEach((panel) => {
-      panel.addEventListener("pointermove", (event) => {
-        const bounds = panel.getBoundingClientRect();
-        panel.style.setProperty(
-          "--spotlight-x",
-          `${event.clientX - bounds.left}px`,
-        );
-        panel.style.setProperty(
-          "--spotlight-y",
-          `${event.clientY - bounds.top}px`,
-        );
-      });
+  document.querySelectorAll(".feature-card, .final-cta").forEach((panel) => {
+    panel.addEventListener("pointermove", (event) => {
+      const bounds = panel.getBoundingClientRect();
+      panel.style.setProperty(
+        "--spotlight-x",
+        `${event.clientX - bounds.left}px`,
+      );
+      panel.style.setProperty(
+        "--spotlight-y",
+        `${event.clientY - bounds.top}px`,
+      );
     });
+  });
 
   const hero = document.querySelector(".hero");
   hero?.addEventListener("pointermove", (event) => {

@@ -644,9 +644,6 @@ kbd {
 .purple-icon {
   background: linear-gradient(145deg, #312868, #201946);
 }
-.settings-icon {
-  background: linear-gradient(145deg, #9aa8b8, #536274);
-}
 .calculator-icon {
   background: linear-gradient(145deg, #806fff, #42348f);
 }
@@ -829,7 +826,6 @@ h2 {
 }
 
 .feature-card::before,
-.privacy::before,
 .final-cta::before {
   position: absolute;
   z-index: 0;
@@ -857,7 +853,6 @@ h2 {
 }
 
 .feature-card:hover::before,
-.privacy:hover::before,
 .final-cta:hover::before {
   opacity: 1;
 }
@@ -1313,127 +1308,63 @@ h2 {
 }
 
 .privacy {
-  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.82fr);
+  grid-template-columns: minmax(0, 0.82fr) minmax(24rem, 1.18fr);
   align-items: center;
   gap: clamp(2.5rem, 7vw, 6rem);
-  overflow: hidden;
-  padding: clamp(2rem, 6vw, 4.5rem);
-  border: 1px solid var(--line);
-  border-radius: 1.2rem;
-  background:
-    radial-gradient(
-      circle at 100% 0%,
-      rgb(107 89 255 / 14%),
-      transparent 36rem
-    ),
-    var(--surface);
-  isolation: isolate;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  border-block: 1px solid var(--line);
 }
 
 .privacy h2 {
   font-size: clamp(2.2rem, 5vw, 4.3rem);
 }
-.privacy-copy > p:not(.eyebrow):not(.privacy-note) {
+.privacy-copy > p:not(.eyebrow) {
   max-width: 40rem;
   margin: 1.3rem 0 0;
   color: var(--muted);
   font-size: 1.02rem;
 }
-.privacy-note {
-  display: flex;
-  gap: 0.65rem;
-  max-width: 36rem;
-  margin: 1.5rem 0 0;
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-.privacy-note span {
-  display: grid;
-  flex: 0 0 auto;
-  width: 1.25rem;
-  height: 1.25rem;
-  place-items: center;
-  border: 1px solid rgb(125 211 252 / 35%);
-  border-radius: 50%;
-  color: var(--info);
-  font-size: 0.65rem;
-}
-.privacy-panel {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--line-bright);
-  border-radius: 1rem;
-  background: rgb(5 11 20 / 72%);
-  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 22%);
-}
-.privacy-panel-header,
-.privacy-panel-footer {
-  display: flex;
+.privacy-link {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: 3.6rem;
-  padding: 0.8rem 1rem;
-}
-.privacy-panel-header {
-  border-bottom: 1px solid var(--line);
+  gap: 0.45rem;
+  margin-top: 1.5rem;
   color: var(--text);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration-color: var(--line-bright);
 }
-.privacy-panel-header span {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
+.privacy-link span {
+  color: var(--seek-bright);
 }
-.privacy-panel-header i {
-  width: 0.48rem;
-  height: 0.48rem;
-  border-radius: 50%;
-  background: var(--info);
-  box-shadow: 0 0 0.9rem var(--info);
-}
-.privacy-panel-header strong {
-  color: var(--info);
-  font-size: 0.62rem;
-}
-.privacy-panel ul {
+.privacy-facts {
   margin: 0;
-  padding: 0.4rem 1rem;
+  padding: 0;
+  border-top: 1px solid var(--line);
   list-style: none;
 }
-.privacy-panel li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.privacy-facts li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
   gap: 1rem;
-  padding: 0.78rem 0;
-  border-bottom: 1px solid rgb(32 51 74 / 70%);
-  color: var(--muted);
-  font-size: 0.8rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--line);
 }
-.privacy-panel li:last-child {
-  border-bottom: 0;
-}
-.privacy-panel li strong {
-  color: var(--text);
+.privacy-facts li > span {
+  color: var(--seek);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 550;
+  font-size: 0.68rem;
 }
-.privacy-panel-footer {
-  justify-content: flex-start;
-  border-top: 1px solid var(--line);
-  background: rgb(107 89 255 / 6%);
+.privacy-facts strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.92rem;
+}
+.privacy-facts p {
+  margin: 0.25rem 0 0;
   color: var(--muted);
-  font-size: 0.7rem;
-}
-.privacy-panel-footer img {
-  border-radius: 0.45rem;
+  font-size: 0.78rem;
 }
 
 .final-cta {
@@ -2071,10 +2002,7 @@ h2 {
   }
   .privacy {
     grid-template-columns: 1fr;
-    padding: 1.5rem;
-  }
-  .privacy-panel {
-    width: 100%;
+    padding-block: 2.5rem;
   }
   .footer-shell {
     grid-template-columns: repeat(2, 1fr);
